@@ -135,7 +135,7 @@ class ViewController: UIViewController, AVSpeechSynthesizerDelegate {
             
             print("current title changed: \(self.currentTitle)")
             
-            self.showDeckTitle()
+            // self.showDeckTitle()
         }
     }
     

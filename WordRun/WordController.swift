@@ -65,6 +65,10 @@ struct WordList {
     // getWord() -> (String,String) : (currentWord, currentDeckTitle)
     mutating func getWord() -> (String, String) {
         
+        return getRandomWord()
+        
+        ////////
+        
         if WordList.wordIndex < WordList.decs[WordList.deckIndex].words.count {
             let retWord = WordList.decs[WordList.deckIndex].words[WordList.wordIndex]
             WordList.wordIndex += 1
@@ -81,6 +85,15 @@ struct WordList {
 
         return (retWord, WordList.decs[WordList.deckIndex].title)
         
+    }
+    
+    mutating func getRandomWord() -> (String, String) {
+        let randomDeckIndex = Int(arc4random_uniform(UInt32(Int(WordList.decs.count-1))))
+        let randomDeck = WordList.decs[randomDeckIndex]
+    
+        let randomWordIndex = Int(arc4random_uniform(UInt32(Int(randomDeck.words.count-1))))
+        
+        return (randomDeck.words[randomWordIndex], randomDeck.title)
     }
     
     mutating func resetDeck() {
